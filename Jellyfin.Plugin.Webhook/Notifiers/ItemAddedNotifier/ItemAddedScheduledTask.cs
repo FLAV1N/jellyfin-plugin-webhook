@@ -12,7 +12,7 @@ namespace Jellyfin.Plugin.Webhook.Notifiers.ItemAddedNotifier;
 /// </summary>
 public class ItemAddedScheduledTask : IScheduledTask, IConfigurableScheduledTask
 {
-    private const int RecheckIntervalSec = 30;
+    private const int RecheckIntervalSec = 240;
     private readonly IItemAddedManager _itemAddedManager;
     private readonly ILocalizationManager _localizationManager;
 
