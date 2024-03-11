@@ -66,6 +66,16 @@ public static class DataObjectHelpers
             dataObject["Year"] = item.ProductionYear;
         }
 
+        if (item.PremiereDate is not null)
+        {
+            dataObject["PremiereDate"] = item.PremiereDate.Value.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+        }
+
+        if (item.Genres is not null && item.Genres.Length > 0)
+        {
+            dataObject["Genres"] = string.Join(", ", item.Genres);
+        }
+
         switch (item)
         {
             case Season season:
@@ -77,6 +87,11 @@ public static class DataObjectHelpers
                 if (season.Series?.ProductionYear is not null)
                 {
                     dataObject["Year"] = season.Series.ProductionYear;
+                }
+
+                if (season.Series?.Id is not null)
+                {
+                    dataObject["SeriesId"] = season.Series.Id;
                 }
 
                 if (season.IndexNumber is not null)
@@ -91,6 +106,21 @@ public static class DataObjectHelpers
                 if (!string.IsNullOrEmpty(episode.Series?.Name))
                 {
                     dataObject["SeriesName"] = episode.Series.Name.Escape();
+                }
+
+                if (episode.Series?.Id is not null)
+                {
+                    dataObject["SeriesId"] = episode.Series.Id;
+                }
+
+                if (!episode.SeasonId.Equals(default))
+                {
+                    dataObject["SeasonId"] = episode.SeasonId;
+                }
+
+                if (episode.Series?.PremiereDate is not null)
+                {
+                    dataObject["SeriesPremiereDate"] = episode.Series.PremiereDate.Value.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
                 }
 
                 if (episode.Season?.IndexNumber is not null)
@@ -117,6 +147,11 @@ public static class DataObjectHelpers
                 if (episode.Series?.ProductionYear is not null)
                 {
                     dataObject["Year"] = episode.Series.ProductionYear;
+                }
+
+                if (episode.Series?.AirTime is not null)
+                {
+                    dataObject["AirTime"] = episode.Series.AirTime;
                 }
 
                 break;
@@ -237,6 +272,11 @@ public static class DataObjectHelpers
         dataObject[nameof(playbackProgressEventArgs.DeviceId)] = playbackProgressEventArgs.DeviceId;
         dataObject[nameof(playbackProgressEventArgs.DeviceName)] = playbackProgressEventArgs.DeviceName;
         dataObject[nameof(playbackProgressEventArgs.ClientName)] = playbackProgressEventArgs.ClientName;
+
+        if (playbackProgressEventArgs.Session is not null && playbackProgressEventArgs.Session.PlayState?.PlayMethod is not null)
+        {
+            dataObject["PlayMethod"] = playbackProgressEventArgs.Session.PlayState.PlayMethod;
+        }
 
         return dataObject;
     }
