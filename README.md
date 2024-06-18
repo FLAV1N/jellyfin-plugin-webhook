@@ -6,7 +6,7 @@
 <br/>
 <br/>
 <a href="https://github.com/jellyfin/jellyfin-plugin-webhook/actions?query=workflow%3A%22Test+Build+Plugin%22">
-<img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/jellyfin/jellyfin-plugin-webhook/Test%20Build%20Plugin.svg">
+<img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/jellyfin/jellyfin-plugin-webhook/.github/workflows/test.yaml?branch=main">
 </a>
 <a href="https://github.com/jellyfin/jellyfin-plugin-webhook">
 <img alt="GPLv3 License" src="https://img.shields.io/github/license/jellyfin/jellyfin-plugin-webhook.svg"/>
@@ -97,6 +97,8 @@ See [Templates](Jellyfin.Plugin.Webhook/Templates) for sample templates.
         - The media runtime, in [Ticks](https://docs.microsoft.com/en-us/dotnet/api/system.datetime.ticks)
     - RunTime
         - The media runtime, as `hh:mm:ss`
+    - AspectRatio
+        - Item original aspect ratio 
 
 
 - Playback
